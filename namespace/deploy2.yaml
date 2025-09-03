@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-ns2
+  namespace: ns2
+  labels:
+    app: deploy-ns2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-ns2
+  template:
+    metadata:
+      labels:
+        app: deploy-ns2
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+          ports:
+            - containerPort: 80
+          
