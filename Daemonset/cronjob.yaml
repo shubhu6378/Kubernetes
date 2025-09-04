@@ -1,0 +1,21 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob-app
+  labels:
+    app: cj
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cj
+              image: busybox
+              command:
+                - /bin/sh
+                - -c
+                - date; echo "Hello from CronJob! - Welcome to Kubernetes"
+          restartPolicy: OnFailure 

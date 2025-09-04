@@ -1,0 +1,19 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluent-ds
+  labels:
+    app: fluent-app
+spec:
+  selector:
+    matchLabels:
+      app: fluent-app
+  template:
+    metadata:
+      labels:
+        app: fluent-app
+    spec:
+      containers:
+        - name: fluent-container
+          image: fluent/fluentd:latest
